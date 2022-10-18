@@ -15,8 +15,8 @@
 			<div class="wrapper">
 				<nav id="sidebar" class="sidebar js-sidebar">
 					<div class="sidebar-content js-simplebar">
-						<a class="sidebar-brand" href="index.html">
-							<span class="align-middle">AdminKit</span>
+						<a class="sidebar-brand" href="{{ path('app_admin_dashboard') }}">
+							<span class="align-middle">Admin La Librairie</span>
 						</a>
 
 						<ul class="sidebar-nav">
@@ -25,16 +25,16 @@
 							</li>
 
 							<li class="sidebar-item active">
-								<a class="sidebar-link" href="index.html">
+								<a class="sidebar-link" href="{{ path('app_admin_dashboard') }}">
 									<i class="align-middle" data-feather="sliders"></i>
 									<span class="align-middle">Dashboard</span>
 								</a>
 							</li>
 
 							<li class="sidebar-item">
-								<a class="sidebar-link" href="pages-profile.html">
-									<i class="align-middle" data-feather="user"></i>
-									<span class="align-middle">Profile</span>
+								<a class="sidebar-link" href="{{ path('app_admin_home_index') }}">
+									<i class="align-middle" data-feather="home"></i>
+									<span class="align-middle">Home</span>
 								</a>
 							</li>
 
@@ -343,11 +343,9 @@
 					</footer>
 				</div>
 			</div>
+            <script src="{{ asset('js/app.js') }}"></script>
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 				{% block javascripts %}
-					<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-					<script>
-						src ="{{ asset('js/app.js') }}"
-					</script>
 				{% endblock %}
 			</body>
 		</html>
