@@ -1,0 +1,47 @@
+{% extends 'base-backend.html.twig' %}
+
+{% block title %}TypeOfBook index
+{% endblock %}
+
+{% block body %}
+	<div class="d-flex justify-content-between align-items-center">
+		<h1>Genres de Livre</h1>
+		<a href="{{ path('app_admin_type_of_book_new') }}" class="btn btn-success">Nouveau</a>
+	</div>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>TypeName</th>
+				<th>TypeDes</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for type_of_book in type_of_books %}
+				<tr>
+					<td>{{ type_of_book.id }}</td>
+					<td>{{ type_of_book.typeName }}</td>
+					<td>{{ type_of_book.typeDes }}</td>
+					<td>
+						<div class="text-end d-flex justify-content-end align-item-center">
+							<a href="{{ path('app_admin_type_of_book_show', {'id': type_of_book.id}) }}" class="btn btn-dark">
+								<i class="align-middle" data-feather="eye"></i>
+							</a>
+							<a href="{{ path('app_admin_type_of_book_edit', {'id': type_of_book.id}) }}" class="btn btn-success mx-1">
+								<i class="align-middle" data-feather="edit-2"></i>
+							</a>
+							{{ include('admin_type_of_book/_delete_form.html.twig') }}
+						</div>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="4">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+{% endblock %}

@@ -2,15 +2,14 @@
 
 namespace App\Entity;
 
-use App\Repository\CarouselRepository;
-use Doctrine\DBAL\Types\Types;
+use App\Repository\BookPageRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
-#[ORM\Entity(repositoryClass: CarouselRepository::class)]
+#[ORM\Entity(repositoryClass: BookPageRepository::class)]
 #[Vich\Uploadable]
-class Carousel
+class BookPage
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -18,23 +17,18 @@ class Carousel
     private ?int $id = null;
 
     // NOTE: This is not a mapped field of entity metadata, just a simple property.
-    #[Vich\UploadableField(mapping: 'carousels', fileNameProperty: 'imageName')]
+    #[Vich\UploadableField(mapping: 'bookpages', fileNameProperty: 'imageName')]
     private ?File $imageFile = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 255)]
     private ?string $imageName = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $title = null;
-
-    #[ORM\Column(type: Types::TEXT, nullable: true)]
-    private ?string $text = null;
-
-    #[ORM\Column(length: 30)]
-    private ?string $tag = null;
-
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column]
     private ?\DateTimeImmutable $updatedAt = null;
+
+    #[ORM\ManyToOne(inversedBy: 'bookPages')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Book $book = null;
 
     public function getId(): ?int
     {
@@ -71,45 +65,9 @@ class Carousel
         return $this->imageName;
     }
 
-    public function setImageName(?string $imageName): self
+    public function setImageName(string $imageName): self
     {
         $this->imageName = $imageName;
-
-        return $this;
-    }
-
-    public function getTitle(): ?string
-    {
-        return $this->title;
-    }
-
-    public function setTitle(?string $title): self
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
-    public function getText(): ?string
-    {
-        return $this->text;
-    }
-
-    public function setText(?string $text): self
-    {
-        $this->text = $text;
-
-        return $this;
-    }
-
-    public function getTag(): ?string
-    {
-        return $this->tag;
-    }
-
-    public function setTag(string $tag): self
-    {
-        $this->tag = $tag;
 
         return $this;
     }
@@ -119,9 +77,21 @@ class Carousel
         return $this->updatedAt;
     }
 
-    public function setUpdatedAt(?\DateTimeImmutable $updatedAt): self
+    public function setUpdatedAt(\DateTimeImmutable $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getBook(): ?Book
+    {
+        return $this->book;
+    }
+
+    public function setBook(?Book $book): self
+    {
+        $this->book = $book;
 
         return $this;
     }

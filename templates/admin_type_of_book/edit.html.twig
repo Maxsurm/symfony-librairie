@@ -1,0 +1,15 @@
+{% extends 'base-backend.html.twig' %}
+
+{% block title %}Modification du genre du livre{% endblock %}
+
+{% block body %}
+<a href="{{ path('app_admin_type_of_book_index') }}" class= "btn btn-dark btn-sm">Retour à la liste</a>
+<div class="d-flex justify-content-between align-items-center mt-3">
+    <h1>Modification du genre du livre</h1>
+        {{ include('admin_type_of_book/_delete_form.html.twig') }}
+    </div>
+
+    {{ include('admin_type_of_book/_form.html.twig', {'button_label': 'Update'}) }}
+
+
+{% endblock %}

@@ -9,6 +9,7 @@
 			{% endblock %}
 		</title>
 		<link rel="stylesheet" href="{{ asset('css/app.css') }}">
+		<link rel="stylesheet" href="{{ asset('css/lightbox.min.css') }}">
 		<link rel="stylesheet" href="{{ asset('css/styles-back.min.css') }}"> {% block stylesheets %}{% endblock %}
 		</head>
 		<body>
@@ -39,63 +40,37 @@
 							</li>
 
 							<li class="sidebar-item">
-								<a class="sidebar-link" href="pages-sign-in.html">
-									<i class="align-middle" data-feather="log-in"></i>
-									<span class="align-middle">Sign In</span>
+								<a class="sidebar-link" href="{{ path('app_admin_carousel_index') }}">
+									<i class="align-middle" data-feather="image"></i>
+									<span class="align-middle">Carousel</span>
 								</a>
 							</li>
 
 							<li class="sidebar-item">
-								<a class="sidebar-link" href="pages-sign-up.html">
-									<i class="align-middle" data-feather="user-plus"></i>
-									<span class="align-middle">Sign
-																																								                        Up</span>
+								<a class="sidebar-link" href="{{ path('app_admin_author_index') }}">
+									<i class="align-middle" data-feather="user"></i>
+									<spUp class="align-middle">Auteurs</span>
 								</a>
 							</li>
 
 							<li class="sidebar-item">
-								<a class="sidebar-link" href="pages-blank.html">
+								<a class="sidebar-link" href="{{ path('app_admin_book_index') }}">
 									<i class="align-middle" data-feather="book"></i>
-									<span class="align-middle">Blank</span>
-								</a>
-							</li>
-
-							<li class="sidebar-header">
-								Tools & Components
-							</li>
-
-							<li class="sidebar-item">
-								<a class="sidebar-link" href="ui-buttons.html">
-									<i class="align-middle" data-feather="square"></i>
-									<span class="align-middle">Buttons</span>
+									<span class="align-middle">Livres</span>
 								</a>
 							</li>
 
 							<li class="sidebar-item">
-								<a class="sidebar-link" href="ui-forms.html">
-									<i class="align-middle" data-feather="check-square"></i>
-									<span class="align-middle">Forms</span>
+								<a class="sidebar-link" href="{{ path('app_admin_book_page_index') }}">
+									<i class="align-middle" data-feather="file-text"></i>
+									<span class="align-middle">Pages de Livre</span>
 								</a>
 							</li>
 
 							<li class="sidebar-item">
-								<a class="sidebar-link" href="ui-cards.html">
-									<i class="align-middle" data-feather="grid"></i>
-									<span class="align-middle">Cards</span>
-								</a>
-							</li>
-
-							<li class="sidebar-item">
-								<a class="sidebar-link" href="ui-typography.html">
-									<i class="align-middle" data-feather="align-left"></i>
-									<span class="align-middle">Typography</span>
-								</a>
-							</li>
-
-							<li class="sidebar-item">
-								<a class="sidebar-link" href="icons-feather.html">
-									<i class="align-middle" data-feather="coffee"></i>
-									<span class="align-middle">Icons</span>
+								<a class="sidebar-link" href="{{ path('app_admin_type_of_book_index') }}">
+									<i class="align-middle" data-feather="briefcase"></i>
+									<span class="align-middle">Genres de livre</span>
 								</a>
 							</li>
 
@@ -343,8 +318,10 @@
 					</footer>
 				</div>
 			</div>
-            <script src="{{ asset('js/app.js') }}"></script>
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+            <script src="{{ asset('js/app.js') }}"></script>
+			<script src="{{ asset('js/lightbox.min.js') }}"></script>
+			<script src="{{ asset('js/add-collection-widget.js') }}"></script>
 				{% block javascripts %}
 				{% endblock %}
 			</body>
